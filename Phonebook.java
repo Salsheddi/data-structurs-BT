@@ -11,6 +11,12 @@ public class Phonebook {
     public static BST <String, Contact> contacts = new BST <String, Contact>();
     public static BST <String, Event> events = new BST <String, Event>();
     
+
+public void icanpush()
+{
+    
+}
+
     public static int menu ()
     {
         System.out.println("Please choose an option:");
