@@ -1,5 +1,4 @@
 
-import java.util.Date;
 public class Event implements Comparable<Event> {
     String title;
     String date;
