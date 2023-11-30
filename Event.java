@@ -6,7 +6,7 @@ public class Event implements Comparable<Event> {
     String time;
     String location;
     
-    LinkedList <String> contacts_names;
+    LinkedList <String> contactsnames;
     boolean EventOrapp;  //this flag will be true if the object is event and false if its appointment
 
     public Event() {
@@ -15,23 +15,23 @@ public class Event implements Comparable<Event> {
         this.time = "";
         this.location = "";
         this.EventOrapp = true;
-        this.contacts_names = new LinkedList<String> ();
+        this.contactsnames = new LinkedList<String> ();
     }
     
-    public Event(String title, String date, String time, String location, boolean t, String contact) {
+    public Event(String title, String date, String time, String location, boolean type, String contact) {
         this.title = title;
         this.date = date;
         this.time = time;
         this.location = location;
-        this.EventOrapp =t;
-        this.contacts_names = new LinkedList<String> ();
-        contacts_names.insert(contact);
+        this.EventOrapp =type;
+        this.contactsnames = new LinkedList<String> ();
+        contactsnames.insert(contact);
     }
 
     public boolean addContact (String contact)
     {
-        if ((this.EventOrapp == true) || ((this.EventOrapp == false)&&(contacts_names.size == 0)))
-            return contacts_names.insert(contact);
+        if ((this.EventOrapp == true) || ((this.EventOrapp == false)&&(contactsnames.size == 0)))
+            return contactsnames.insert(contact);
         
         System.out.println("Could not add more than contact for an appoinment");
         return false;
@@ -39,23 +39,13 @@ public class Event implements Comparable<Event> {
     
     public boolean removeContact(String contact)
     {
-            String name = contacts_names.remove(contact);
+            String name = contactsnames.remove(contact);
             if ( name != null)
                 return true; 
             return false;
     }
 
-    @Override
-    public String toString() {
-        String EventT = (this.EventOrapp == true)? "Event ": "Appoinment ";     
-        String str = "\nEvent title: " + title +
-                    "\nEvent date and time (MM/DD/YYYY HH:MM): " + date + time +
-                   "\nEvent location: " + location + "\n" +
-                   "\nType: " + EventT + "\n" +
-                    "\nContacts names:   \n" + contacts_names.toString();
-                
-          return str;
-    }
+    
 
         public void display() {
             String Eventorapp  ;  
@@ -68,7 +58,7 @@ public class Event implements Comparable<Event> {
                     "\nEvent date and time (MM/DD/YYYY HH:MM): " + date + time +
                    "\nEvent location: " + location + "\n" +
                    "\nType: " + Eventorapp + "\n" +
-                    "\nContacts names:   \n"  + contacts_names.toString();
+                    "\nContacts names:   \n"  + contactsnames.toString();
                 
             System.out.println(str);
     }
@@ -81,8 +71,8 @@ public class Event implements Comparable<Event> {
         }
         catch (Exception e)
         {
-             //To change body of generated methods, choose Tools | Templates.
-            throw new UnsupportedOperationException("Not supported yet.");
+            throw new UnsupportedOperationException("Unsupported");
+
         }
     }
 
@@ -94,9 +84,21 @@ public class Event implements Comparable<Event> {
         }
         catch (Exception e)
         {
-             //To change body of generated methods, choose Tools | Templates.
-            throw new UnsupportedOperationException("Not supported yet.");
-        }
+            
+             throw new UnsupportedOperationException("Unsupported");
+            }
+    }
+    
+    @Override
+    public String toString() {
+        String EventT = (this.EventOrapp == true)? "Event ": "Appoinment ";     
+        String str = "\nEvent title: " + title +
+                    "\nEvent date and time (MM/DD/YYYY HH:MM): " + date + time +
+                   "\nEvent location: " + location + "\n" +
+                   "\nType: " + EventT + "\n" +
+                    "\nContacts names:   \n" + contactsnames.toString();
+                
+          return str;
     }
     
 }

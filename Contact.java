@@ -27,22 +27,9 @@ public class Contact implements Comparable<Contact> {
         this.notes = notes;
         events = new LinkedList<Event>();
     }
-
-    @Override
-    public String toString() {
-        return "\nName: " + name +
-                    "\nPhone Number: " + phonenumber +
-                    "\nEmail Address: " + emailaddress +
-                    "\nAddress: " +  address +
-                    "\nBirthday: " + birthday +
-                    "\nNotes: " + notes + 
-                    "\nEvents : " + events.toString();
-
-    }
-
     public boolean addEvent( Event e)
     {
-        if ((e.EventOrapp) || (!e.EventOrapp && e.contacts_names.size==0))
+        if ((e.EventOrapp) || (!e.EventOrapp && e.contactsnames.size==0))
         {
                 if (! events.empty())
                 {
@@ -60,31 +47,57 @@ public class Contact implements Comparable<Contact> {
         return false;
     }
 
-    public boolean removeEvent( String eTitle)
+    public boolean removeEvent( String eventTitle)
     {
         if (events.empty())
             return false;
-       Event val = new Event();
-       val.title = eTitle;
-        if (events.search(val))
+       Event temp = new Event();
+       temp.title = eventTitle;
+        if (events.search(temp))
         {
-            events.remove(val);
+            events.remove(temp);
             return true;
         }
         return false;
     }
     
     @Override
-    public int compareTo(Contact o) {
+    public int compareTo(Contact con) {
         try {
-            return (this.name.compareToIgnoreCase(o.name));
+            return (this.name.compareToIgnoreCase(con.name));
         }
         catch (Exception e)
         {
-             //To change body of generated methods, choose Tools | Templates.
-            throw new UnsupportedOperationException("Not supported yet.");
+             
+            throw new UnsupportedOperationException("Unsupported");
         }
     }
+
+
+public int compareToBirthday(String birthday) {
+        try {
+            return (this.birthday.compareTo(birthday) ) ;
+        }
+        catch (Exception e)
+        {
+            
+            throw new UnsupportedOperationException("Unsupported");
+        }
+    }
+    
+    public int compareFirstName(String name) {
+        try {
+            String [] arr = this.name.split(" ");
+            return (arr[0].compareToIgnoreCase(name) ) ;
+        }
+        catch (Exception e)
+        {
+        
+            throw new UnsupportedOperationException("Unsupported");
+        }
+    }
+
+
 
     
     public int compareToPhone(String Phone) {
@@ -93,19 +106,19 @@ public class Contact implements Comparable<Contact> {
         }
         catch (Exception e)
         {
-             //To change body of generated methods, choose Tools | Templates.
-            throw new UnsupportedOperationException("Not supported yet.");
+             
+            throw new UnsupportedOperationException("Unsupported");
         }
     }
 
-    public int compareToEmail(String emailaddress) {
+    public int compareToEmail(String email) {
         try {
-            return (this.emailaddress.compareToIgnoreCase(emailaddress));
+            return (this.emailaddress.compareToIgnoreCase(email));
         }
         catch (Exception e)
         {
-             //To change body of generated methods, choose Tools | Templates.
-            throw new UnsupportedOperationException("Not supported yet.");
+             
+            throw new UnsupportedOperationException("Unsupported");
         }
     }
 
@@ -115,31 +128,22 @@ public class Contact implements Comparable<Contact> {
         }
         catch (Exception e)
         {
-             //To change body of generated methods, choose Tools | Templates.
-            throw new UnsupportedOperationException("Not supported yet.");
+            throw new UnsupportedOperationException("Unsupported");
         }
     }
 
-    public int compareToBirthday(String birthday) {
-        try {
-            return (this.birthday.compareTo(birthday) ) ;
-        }
-        catch (Exception e)
-        {
-             //To change body of generated methods, choose Tools | Templates.
-            throw new UnsupportedOperationException("Not supported yet.");
-        }
-    }
     
-    public int compareFirstName(String name) {
-        try {
-            String [] all = this.name.split(" ");
-            return (all[0].compareToIgnoreCase(name) ) ;
-        }
-        catch (Exception e)
-        {
-             //To change body of generated methods, choose Tools | Templates.
-            throw new UnsupportedOperationException("Not supported yet.");
-        }
+
+
+    @Override
+    public String toString() {
+        return "\nName: " + name +
+                    "\nPhone Number: " + phonenumber +
+                    "\nEmail Address: " + emailaddress +
+                    "\nAddress: " +  address +
+                    "\nBirthday: " + birthday +
+                    "\nNotes: " + notes + 
+                    "\nEvents : " + events.toString();
+
     }
 }
