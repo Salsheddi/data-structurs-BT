@@ -10,12 +10,6 @@ public class Phonebook {
     public static Scanner input = new Scanner (System.in);
     public static BST <String, Contact> contacts = new BST <String, Contact>();
     public static BST <String, Event> events = new BST <String, Event>();
-    
-
-public void icanpush()
-{//metoo
-    
-}
 
     public static int menu ()
     {
@@ -59,52 +53,55 @@ public void icanpush()
     
     //1. Add a contact
     public static void AddContact(){
-        Contact c = new Contact();
-        System.out.println("Enter the contact\'s name: ");
+        Contact contact = new Contact();
         input.nextLine();
-        c.name = input.nextLine();
-        
-        if (!contacts.empty() && contacts.findkey(c.name))
+        System.out.print("Enter the contact's name: ");
+        String name = input.nextLine();
+        contact.setName(name);
+
+        if (!contacts.empty() && contacts.findkey(contact.name))
         {
                 System.out.println("Contact found!");
                 return;
         }
         System.out.print("Enter the contact's phone number:");
-        c.phonenumber = input.nextLine();
+        String phonenumber = input.next();
+        contact.setPhoneNumber(phonenumber);
         
-        if (!contacts.empty() && (contacts.SearchPhone(c.phonenumber)))
+        if (!contacts.empty() && (contacts.SearchPhone(contact.phonenumber)))
         {
             System.out.println("Contact found!");
             return;
         }
         System.out.print("Enter the contact's email address: ");
-        c.emailaddress = input.nextLine();
-        
+        contact.setEmailAddress( input.nextLine());
+                
         System.out.print("Enter the contact's address: ");
-        c.address = input.nextLine();
-        
+        contact.setAddress(input.nextLine());
+                
         System.out.print("Enter the contact's birthday: ");
-        c.birthday = input.nextLine();
-        
+        contact.setBirthday(input.nextLine());
+                
         System.out.print("Enter any notes for the contact: ");
-        c.notes = input.nextLine();
+        contact.setNotes(input.nextLine());
+        System.out.println("");
         
-        if (contacts.insert(c.name, c))
-            System.out.println("Contact added successfully!");
+        if (contacts.insert(contact.name , contact))
+        System.out.println("\n Contact added successfully!"); 
     }
 
     //2. Search for a contact
     public static void SearchContact(){
-        int choice = submenu2();
+        int c= submenu2();
         if (contacts.empty())
             System.out.println("Contact not found!");
         else
         {
-            switch ( choice )
+            switch (c)
            {
                case 1:
                {
-                    System.out.print("Enter the contact\'s name: ");
+                    System.out.print("Enter the contact's name: ");
                     input.nextLine();
                     String name = input.nextLine();
                     
@@ -115,30 +112,29 @@ public void icanpush()
                         System.out.println(contacts.retrieve().toString());
                         break;
                     }
-                    System.out.println("Contact could not found!");
-               }
+                    System.out.println("No contacts are found with this name!");
                break;
 
                case 2:
                {
-                   System.out.print("Enter the contact's phone number:");
-                   input.nextLine();
-                    String phonenumber = input.nextLine();
+                    System.out.print("Enter the contact's phone number: ");
+                    input.nextLine();
+                    String phoneNumber = input.nextLine();
                    
-                    if (!contacts.empty() && contacts.SearchPhone(phonenumber))
+                    if (!contacts.empty() && contacts.SearchPhone(phoneNumber))
                     {
                         System.out.println("Contact found!");
                         
                         System.out.println(contacts.retrieve());
                         break;
                     }
-                    System.out.println("Contact could not found!");
-               }
+                    System.out.println("No contacts are found with this phone number!");
+                }
                break;
 
                case 3:
                {
-                   System.out.print("Enter the contact's email address: ");
+                   System.out.print("Enter the contact's email: ");
                    input.nextLine();
                     String emailaddress = input.nextLine();
                    
@@ -148,14 +144,13 @@ public void icanpush()
                         System.out.println("Contact found!");
                         break;
                     }
-                    System.out.println("Contacts could not found!");
-               }                
+                    System.out.println("No contacts are found with this email!");
+                }                
                break;
 
                case 4:
                {
-                   System.out.print("Enter the contact's address: ");
-                   input.nextLine();
+                    System.out.print("Enter the contact's address: "); 
                     String address = input.nextLine();
                     if (!contacts.empty() )
                     {
@@ -163,13 +158,13 @@ public void icanpush()
                         System.out.println("Contact found!");
                         break;
                     }
-                    System.out.println("Contacts could not found!");
+                    System.out.println("No contacts are found with this address!");
                }                
                break;
 
                case 5:
                {
-                   System.out.print("Enter the contact's Birthday: ");
+                    System.out.print("Enter the contact's birthday: ");
                     String birthday = input.nextLine();;
                     if (!contacts.empty() )
                     {
@@ -177,8 +172,8 @@ public void icanpush()
                         System.out.println("Contact found!");
                         break;
                     }
-                    System.out.println("Contacts could not found!");
-               }
+                    System.out.println("No contacts are found with this birthday!");
+                }
            }
         }            
     }

@@ -1,3 +1,4 @@
+import java.util.LinkedList;
 
 public class Contact implements Comparable<Contact> {
     String name;
@@ -6,7 +7,7 @@ public class Contact implements Comparable<Contact> {
     String address;
     String birthday; 
     String notes;
-    LinkedList<Event> events ; 
+    LinkedListADT<Event> events ; 
    
     public Contact() {
         this.name = "";
@@ -15,7 +16,7 @@ public class Contact implements Comparable<Contact> {
         this.address = "";
         this.birthday = null;
         this.notes = "";
-        events = new LinkedList<Event>();
+        events = new LinkedListADT<Event>();
     }
 
     public Contact(String name, String phonenumber, String emailaddress, String address, String birthday, String notes) {
@@ -25,7 +26,7 @@ public class Contact implements Comparable<Contact> {
         this.address = address;
         this.birthday = birthday;
         this.notes = notes;
-        events = new LinkedList<Event>();
+        events = new LinkedListADT<Event>();
     }
     public boolean addEvent( Event e)
     {
@@ -74,6 +75,60 @@ public class Contact implements Comparable<Contact> {
     }
 
 
+    public String getName() {
+        return name;
+        }
+    
+        public String getPhoneNumber() {
+        return phoneNumber;
+        }
+    
+        public String getEmailAddress() {
+        return emailAddress;
+        }
+    
+        public String getAddress() {
+        return address;
+        }
+    
+        public LinkedListADT<Event> getEvents()
+        {
+            return events;
+        }
+        
+        public String getBirthday() {
+            return birthday;
+        }
+    
+        public String getNotes() {
+        return notes;
+        }
+    
+        public void setName(String name) {
+        this.name = name;
+        }
+    
+        public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+        }
+    
+        public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
+        }
+    
+        public void setAddress(String address) {
+        this.address = address;
+        }
+    
+        public void setBirthday(String birthday) {
+        this.birthday = birthday;
+        }
+    
+        public void setNotes(String notes) {
+        this.notes = notes;
+        }
+
+        
 public int compareToBirthday(String birthday) {
         try {
             return (this.birthday.compareTo(birthday) ) ;
