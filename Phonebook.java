@@ -13,47 +13,8 @@ public class Phonebook {
 
     
 
-    public static int mainmenu ()
-    {
-        System.out.println("Please choose an option:");
-        System.out.println("1. Add a contact");
-        System.out.println("2. Search for a contact");
-        System.out.println("3. Delete a contact");
-        System.out.println("4. Schedule an event");
-        System.out.println("5. Print event details");
-        System.out.println("6. Print contacts by first name");
-        System.out.println("7. Print all events alphabetically");
-        System.out.println("8. Exit");
-        System.out.println("\nEnter your choice: ");
-        int choice = input.nextInt();
-        
-        return choice;
-    }
     
-    public static int submenu()
-    {
-        System.out.println("Enter search criteria:");
-        System.out.println("1. Name");
-        System.out.println("2. Phone Number");
-        System.out.println("3. Email Address");
-        System.out.println("4. Address");
-        System.out.println("5. Birthday");
-        System.out.println("\nEnter your choice: ");
-        int choice = input.nextInt();
-        return choice;
-    }
-
-    public static int submenu5()
-    {
-        System.out.println("Enter search criteria:");
-        System.out.println("1. contact name");
-        System.out.println("2. Event tittle");
-        System.out.println("\nEnter your choice: ");
-        int choice = input.nextInt();
-        return choice;
-    }
-    
-    //1. Add a contact
+    //1. Add a contact to the phonebook
     public static void AddContact(){
         Contact contact = new Contact();
         input.nextLine();
@@ -92,9 +53,9 @@ public class Phonebook {
         System.out.println("\n Contact added successfully!"); 
     }
 
-    //2. Search for a contact
-    public static void SearchContact(){
-        int c = submenu();
+    //2. Search for a contact in the phonebook
+    public static void SearchforAContact(){
+        int c = submenu1();
         if (contacts.empty())
             System.out.println("Contact not founded!");
         else
@@ -231,7 +192,7 @@ public class Phonebook {
     }
     
     //4. Schedule an event
-    public static void ScheduleEvent()
+    public static void ScheduleAnEvent()
     {
         Contact c = new Contact();
         Event e = new Event();
@@ -303,8 +264,8 @@ public class Phonebook {
     }
     
     //5. Print event details
-    public static void PrintEvent(){
-        int choice = submenu5();
+    public static void PrintEventdetails(){
+        int choice = submenu2();
         switch ( choice )
         {
             case 1:
@@ -363,7 +324,7 @@ public class Phonebook {
     }
     
     //6. Print contacts by first name
-    public static void PrintContactsFirstName(){
+    public static void PrintContactsbyFirstName(){
        
         System.out.print("Enter the first name:");
         input.nextLine();
@@ -383,8 +344,47 @@ public class Phonebook {
             System.out.println("No events founded !");
     }
         
+    public static int mainmenu ()
+    {
+        System.out.println("Please choose an option:");
+        System.out.println("1. Add a contact");
+        System.out.println("2. Search for a contact");
+        System.out.println("3. Delete a contact");
+        System.out.println("4. Schedule an event");
+        System.out.println("5. Print event details");
+        System.out.println("6. Print contacts by first name");
+        System.out.println("7. Print all events alphabetically");
+        System.out.println("8. Exit");
+        System.out.println("\nEnter your choice: ");
+        int c = input.nextInt();
+        
+        return c;
+    }
+    
+    public static int submenu1()
+    {
+        System.out.println("Enter search criteria:");
+        System.out.println("1. Name");
+        System.out.println("2. Phone Number");
+        System.out.println("3. Email Address");
+        System.out.println("4. Address");
+        System.out.println("5. Birthday");
+        System.out.println("\nEnter your choice: ");
+        int c= input.nextInt();
+        return c;
+    }
+
+    public static int submenu2()
+    {
+        System.out.println("Enter search criteria:");
+        System.out.println("1. contact name");
+        System.out.println("2. Event tittle");
+        System.out.println("\nEnter your choice: ");
+        int choice = input.nextInt();
+        return choice;
+    }
     public static void main(String[] args) {
-        // TODO code application logic here
+        
         
         System.out.println("Welcome to BST Phonebook!");
         int choice;
@@ -397,7 +397,7 @@ public class Phonebook {
                     break;
                 
                 case 2:
-                    SearchContact();
+                    SearchforAContact();
                     break;
                 
                 case 3:
@@ -405,15 +405,15 @@ public class Phonebook {
                     break;
                 
                 case 4:
-                    ScheduleEvent();
+                    ScheduleAnEvent();
                     break;
                 
                 case 5:
-                    PrintEvent();
+                    PrintEventdetails();
                     break;
                     
                 case 6:
-                    PrintContactsFirstName();
+                    PrintContactsbyFirstName();
                     break;
                     
                 case 7:

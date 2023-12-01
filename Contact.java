@@ -2,7 +2,7 @@ import java.util.LinkedList;
 
 public class Contact implements Comparable<Contact> {
     String name;
-    String phonenumber;
+    String phoneNumber;
     String emailaddress;
     String address;
     String birthday; 
@@ -11,7 +11,7 @@ public class Contact implements Comparable<Contact> {
    
     public Contact() {
         this.name = "";
-        this.phonenumber = "";
+        this.phoneNumber = "";
         this.emailaddress = "";
         this.address = "";
         this.birthday = null;
@@ -21,7 +21,7 @@ public class Contact implements Comparable<Contact> {
 
     public Contact(String name, String phonenumber, String emailaddress, String address, String birthday, String notes) {
         this.name = name;
-        this.phonenumber = phonenumber;
+        this.phoneNumber = phonenumber;
         this.emailaddress = emailaddress;
         this.address = address;
         this.birthday = birthday;
@@ -84,7 +84,7 @@ public class Contact implements Comparable<Contact> {
         }
     
         public String getEmailAddress() {
-        return emailAddress;
+        return emailaddress;
         }
     
         public String getAddress() {
@@ -113,7 +113,7 @@ public class Contact implements Comparable<Contact> {
         }
     
         public void setEmailAddress(String emailAddress) {
-        this.emailAddress = emailAddress;
+        this.emailaddress = emailAddress;
         }
     
         public void setAddress(String address) {
@@ -157,7 +157,7 @@ public int compareToBirthday(String birthday) {
     
     public int compareToPhone(String Phone) {
         try {
-            return (this.phonenumber.compareToIgnoreCase(Phone));
+            return (this.phoneNumber.compareToIgnoreCase(Phone));
         }
         catch (Exception e)
         {
@@ -193,7 +193,7 @@ public int compareToBirthday(String birthday) {
     @Override
     public String toString() {
         return "\nName: " + name +
-                    "\nPhone Number: " + phonenumber +
+                    "\nPhone Number: " + phoneNumber +
                     "\nEmail Address: " + emailaddress +
                     "\nAddress: " +  address +
                     "\nBirthday: " + birthday +
