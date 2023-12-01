@@ -55,52 +55,55 @@ public class Phonebook {
     
     //1. Add a contact
     public static void AddContact(){
-        Contact c = new Contact();
-        System.out.println("Enter the contact\'s name: ");
+        Contact contact = new Contact();
         input.nextLine();
-        c.name = input.nextLine();
-        
-        if (!contacts.empty() && contacts.findkey(c.name))
+        System.out.print("Enter the contact's name: ");
+        String name = input.nextLine();
+        contact.setName(name);
+
+        if (!contacts.empty() && contacts.findkey(contact.name))
         {
                 System.out.println("Contact already exists");
                 return;
         }
         System.out.print("Enter the contact's phone number:");
-        c.phonenumber = input.nextLine();
+        String phonenumber = input.next();
+        contact.setPhoneNumber(phonenumber);
         
-        if (!contacts.empty() && (contacts.SearchPhone(c.phonenumber)))
+        if (!contacts.empty() && (contacts.SearchPhone(contact.phoneNumber)))
         {
             System.out.println("Contact already exists");
             return;
         }
         System.out.print("Enter the contact's email address: ");
-        c.emailaddress = input.nextLine();
-        
+        contact.setEmailAddress( input.nextLine());
+                
         System.out.print("Enter the contact's address: ");
-        c.address = input.nextLine();
-        
+        contact.setAddress(input.nextLine());
+                
         System.out.print("Enter the contact's birthday: ");
-        c.birthday = input.nextLine();
-        
+        contact.setBirthday(input.nextLine());
+                
         System.out.print("Enter any notes for the contact: ");
-        c.notes = input.nextLine();
+        contact.setNotes(input.nextLine());
+        System.out.println("");
         
-        if (contacts.insert(c.name, c))
-            System.out.println("Contact added successfully!");
+        if (contacts.insert(contact.name , contact))
+        System.out.println("\n Contact added successfully!"); 
     }
 
     //2. Search for a contact
     public static void SearchContact(){
-        int choice = submenu();
+        int c = submenu();
         if (contacts.empty())
             System.out.println("Contact not founded!");
         else
         {
-            switch ( choice )
+            switch (c)
            {
                case 1:
                {
-                    System.out.print("Enter the contact\'s name: ");
+                    System.out.print("Enter the contact's name: ");
                     input.nextLine();
                     String name = input.nextLine();
                     
@@ -117,11 +120,11 @@ public class Phonebook {
 
                case 2:
                {
-                   System.out.print("Enter the contact's phone number:");
-                   input.nextLine();
-                    String phonenumber = input.nextLine();
+                    System.out.print("Enter the contact's phone number: ");
+                    input.nextLine();
+                    String phoneNumber = input.nextLine();
                    
-                    if (!contacts.empty() && contacts.SearchPhone(phonenumber))
+                    if (!contacts.empty() && contacts.SearchPhone(phoneNumber))
                     {
                         System.out.println("Contact founded!");
                         
@@ -134,7 +137,7 @@ public class Phonebook {
 
                case 3:
                {
-                   System.out.print("Enter the contact's email address: ");
+                   System.out.print("Enter the contact's email: ");
                    input.nextLine();
                     String emailaddress = input.nextLine();
                    
@@ -150,8 +153,7 @@ public class Phonebook {
 
                case 4:
                {
-                   System.out.print("Enter the contact's address: ");
-                   input.nextLine();
+                    System.out.print("Enter the contact's address: "); 
                     String address = input.nextLine();
                     if (!contacts.empty() )
                     {
