@@ -1,11 +1,12 @@
 
+import java.util.Date;
 public class Event implements Comparable<Event> {
     String title;
     String date;
     String time;
     String location;
     
-    LinkedList <String> contactsnames;
+    LinkedListADT <String> contactsnames;
     boolean EventOrapp;  //this flag will be true if the object is event and false if its appointment
 
     public Event() {
@@ -14,7 +15,7 @@ public class Event implements Comparable<Event> {
         this.time = "";
         this.location = "";
         this.EventOrapp = true;
-        this.contactsnames = new LinkedList<String> ();
+        this.contactsnames = new LinkedListADT<String> ();
     }
     
     public Event(String title, String date, String time, String location, boolean type, String contact) {
@@ -23,7 +24,7 @@ public class Event implements Comparable<Event> {
         this.time = time;
         this.location = location;
         this.EventOrapp =type;
-        this.contactsnames = new LinkedList<String> ();
+        this.contactsnames = new LinkedListADT<String> ();
         contactsnames.insert(contact);
     }
 
@@ -90,12 +91,16 @@ public class Event implements Comparable<Event> {
     
     @Override
     public String toString() {
-        String EventT = (this.EventOrapp == true)? "Event ": "Appoinment ";     
+          String Eventorapp  ;  
+            if(EventOrapp==true)
+            Eventorapp="Event";
+            else
+            Eventorapp="Appoinment ";    
         String str = "\nEvent title: " + title +
                     "\nEvent date and time (MM/DD/YYYY HH:MM): " + date + time +
                    "\nEvent location: " + location + "\n" +
-                   "\nType: " + EventT + "\n" +
-                    "\nContacts names:   \n" + contactsnames.toString();
+                   "\nType: " + Eventorapp + "\n" +
+                    "\nContacts names:" + contactsnames.toString();
                 
           return str;
     }

@@ -1,13 +1,10 @@
 
 
 public class BST<K extends Comparable<K>,T> {
-    //================================================================================
     class BSTNode <K extends Comparable<K>,T> {
             public K key;  
             public T data;
             public BSTNode<K,T> left, right;
-
-            /** Creates a new instance of BTNode */
             public BSTNode() {
                     left = right = null;
             }
@@ -31,10 +28,19 @@ public class BST<K extends Comparable<K>,T> {
         }
 
     }
-    //================================================================================
+    
+
+
+
+
+
+
+
+
+    
     BSTNode<K,T> root, current;
 
-    /** Creates a new instance of BST */
+   //BSTADT class 
     public BST() {
             root = current = null;
     }
@@ -72,6 +78,9 @@ public class BST<K extends Comparable<K>,T> {
             current = q;
             return false;
     }
+
+
+
     public boolean insert(K k, T val) {
             BSTNode<K,T>  p;
             BSTNode<K,T>  q = current;
@@ -97,6 +106,9 @@ public class BST<K extends Comparable<K>,T> {
             }
     }
 
+
+
+    
     public boolean remove_key (K tkey){
             Boolean removed = new Boolean(false);
             BSTNode<K,T>  p;

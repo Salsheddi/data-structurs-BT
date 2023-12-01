@@ -4,20 +4,16 @@ import java.util.Scanner;
 
 public class Phonebook {
 
-    /**
-     * @param args the command line arguments
-     */
+   
     public static Scanner input = new Scanner (System.in);
     public static BST <String, Contact> contacts = new BST <String, Contact>();
     public static BST <String, Event> events = new BST <String, Event>();
     
 
-public void icanpush()
-{//metoo
-    
-}
 
-    public static int menu ()
+    
+
+    public static int mainmenu ()
     {
         System.out.println("Please choose an option:");
         System.out.println("1. Add a contact");
@@ -34,7 +30,7 @@ public void icanpush()
         return choice;
     }
     
-    public static int submenu2()
+    public static int submenu()
     {
         System.out.println("Enter search criteria:");
         System.out.println("1. Name");
@@ -66,7 +62,7 @@ public void icanpush()
         
         if (!contacts.empty() && contacts.findkey(c.name))
         {
-                System.out.println("Contact found!");
+                System.out.println("Contact already exists");
                 return;
         }
         System.out.print("Enter the contact's phone number:");
@@ -74,7 +70,7 @@ public void icanpush()
         
         if (!contacts.empty() && (contacts.SearchPhone(c.phonenumber)))
         {
-            System.out.println("Contact found!");
+            System.out.println("Contact already exists");
             return;
         }
         System.out.print("Enter the contact's email address: ");
@@ -95,9 +91,9 @@ public void icanpush()
 
     //2. Search for a contact
     public static void SearchContact(){
-        int choice = submenu2();
+        int choice = submenu();
         if (contacts.empty())
-            System.out.println("Contact not found!");
+            System.out.println("Contact not founded!");
         else
         {
             switch ( choice )
@@ -110,12 +106,12 @@ public void icanpush()
                     
                     if (!contacts.empty() && contacts.findkey(name))
                     {
-                        System.out.println("Contact found!");
+                        System.out.println("Contact founded!");
                         
                         System.out.println(contacts.retrieve().toString());
                         break;
                     }
-                    System.out.println("Contact could not found!");
+                    System.out.println("Contact not founded!");
                }
                break;
 
@@ -127,12 +123,12 @@ public void icanpush()
                    
                     if (!contacts.empty() && contacts.SearchPhone(phonenumber))
                     {
-                        System.out.println("Contact found!");
+                        System.out.println("Contact founded!");
                         
                         System.out.println(contacts.retrieve());
                         break;
                     }
-                    System.out.println("Contact could not found!");
+                    System.out.println("Contact not founded!");
                }
                break;
 
@@ -145,10 +141,10 @@ public void icanpush()
                     if (!contacts.empty())
                     {
                         contacts.SearchEmail(emailaddress);
-                        System.out.println("Contact found!");
+                        System.out.println("Contact founded!");
                         break;
                     }
-                    System.out.println("Contacts could not found!");
+                    System.out.println("Contacts not founded!");
                }                
                break;
 
@@ -160,24 +156,25 @@ public void icanpush()
                     if (!contacts.empty() )
                     {
                         contacts.SearchAddress(address);
-                        System.out.println("Contact found!");
+                        System.out.println("Contact founded!");
                         break;
                     }
-                    System.out.println("Contacts could not found!");
+                    System.out.println("Contact founded!");
                }                
                break;
 
                case 5:
                {
                    System.out.print("Enter the contact's Birthday: ");
-                    String birthday = input.nextLine();;
+                   input.nextLine();
+                    String birthday = input.nextLine();
                     if (!contacts.empty() )
                     {
                         contacts.SearchBirthday(birthday);
-                        System.out.println("Contact found!");
+                        System.out.println("Contact founded!");
                         break;
                     }
-                    System.out.println("Contacts could not found!");
+                    System.out.println("Contact not founded!");
                }
            }
         }            
@@ -193,12 +190,12 @@ public void icanpush()
         c.name = input.nextLine();
        
         if (contacts.empty())
-            System.out.println("Contact not found!");
+            System.out.println("Contact not founded!");
         else
         {
             
             if ( ! contacts.findkey(c.name))
-                System.out.println("Contact not found!");
+                System.out.println("Contact not founded!");
             else
             {
                 c = contacts.retrieve();
@@ -213,7 +210,7 @@ public void icanpush()
                         {
                             Event Update_Event = events.retrieve();
                             Update_Event.removeContact(c.name);
-                            if (Update_Event.contacts_names.empty())
+                            if (Update_Event.contactsnames.empty())
                             {
                                 events.removeKey(e.title);
                                 System.out.println("Delete event, No cantact particapate");
@@ -256,7 +253,7 @@ public void icanpush()
             input.nextLine();
             e.location = input.nextLine();
             
-            System.out.print("Enter the type of event: (E = Event, A = Appoinment) ");
+            System.out.print("Enter the type of event you want to schedule: (E = Event, A = Appoinment) ");
             char t = input.next().charAt(0);
             if (t == 'E' || t =='e')
                 e.EventOrapp = true;
@@ -276,7 +273,7 @@ public void icanpush()
                             && (eventFound.date.compareTo(e.date)== 0 ) 
                             && (eventFound.time.compareTo(e.time)== 0 ))
                     {
-                        eventFound.contacts_names.insert(c.name);
+                        eventFound.contactsnames.insert(c.name);
                         events.update(eventFound.title,eventFound);
                         event_Updated = true;
                     }
@@ -290,7 +287,7 @@ public void icanpush()
                 }
                 if (! event_Updated)  
                 {
-                        e.contacts_names.insert(c.name);
+                        e.contactsnames.insert(c.name);
                         events.insert(e.title, e);
                 }
                     System.out.println("Event scheduled successfully!   ");
@@ -335,10 +332,10 @@ public void icanpush()
                         System.out.println("No events found for this contact !");
                      }
                 else
-                    System.out.println("Contact not found !");
+                    System.out.println("Contact not founded !");
                 }
                 else
-                    System.out.println("Contact not found !");
+                    System.out.println("Contact not founded !");
             }
             break;
 
@@ -351,13 +348,13 @@ public void icanpush()
                 
                 if (! events.empty() && events.findkey(e.title))
                 {
-                    System.out.println("Event found!");
+                    System.out.println("Event founded!");
                     //System.out.println(events.retrieve());
                     Event ee = events.retrieve();
                     System.out.println(ee);
                 }
                 else
-                    System.out.println("Event not found !");
+                    System.out.println("Event not founded !");
             }
             break;
         }
@@ -381,16 +378,16 @@ public void icanpush()
         if (!events.empty())
             System.out.println(events.toString());
         else
-            System.out.println("No events found !");
+            System.out.println("No events founded !");
     }
         
     public static void main(String[] args) {
         // TODO code application logic here
         
-        System.out.println("Welcome to the BST Phonebook!");
+        System.out.println("Welcome to BST Phonebook!");
         int choice;
         do {
-            choice = menu();
+            choice = mainmenu();
             switch (choice)
             {
                 case 1:
