@@ -144,7 +144,7 @@ public class Phonebook {
     public static void DeleteContact()
     {
         Contact c = new Contact();
-        
+        input.nextLine();
         System.out.print("Enter the contact name: ");
         c.name = input.nextLine();
        
@@ -267,9 +267,9 @@ public class Phonebook {
         {
             case 1:
             {
+                input.nextLine();
                 Contact c = new Contact();
                 System.out.print("Enter the contact name :  ");
-                input.nextLine();
                 c.name = input.nextLine();
                         
                 if (! contacts.empty() )
