@@ -1,11 +1,9 @@
 
-import java.util.Date;
 public class Event implements Comparable<Event> {
     String title;
     String date;
     String time;
     String location;
-    
     LinkedListADT <String> contactsnames;
     boolean EventOrapp;  //this flag will be true if the object is event and false if its appointment
 
@@ -33,7 +31,7 @@ public class Event implements Comparable<Event> {
         if ((this.EventOrapp == true) || ((this.EventOrapp == false)&&(contactsnames.size == 0)))
             return contactsnames.insert(contact);
         
-        System.out.println("Could not add more than contact for an appoinment");
+        System.out.println(" can not add more than a contact for an appoinment");
         return false;
     }
     

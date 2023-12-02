@@ -9,10 +9,6 @@ public class Phonebook {
     public static BST <String, Contact> contacts = new BST <String, Contact>();
     public static BST <String, Event> events = new BST <String, Event>();
     
-
-
-    
-
     
     //1. Add a contact to the phonebook
     public static void AddContact(){
@@ -37,6 +33,7 @@ public class Phonebook {
             return;
         }
         System.out.print("Enter the contact's email address: ");
+        input.nextLine();
         contact.setEmailAddress( input.nextLine());
                 
         System.out.print("Enter the contact's address: ");
@@ -148,12 +145,11 @@ public class Phonebook {
     {
         Contact c = new Contact();
         
-        System.out.print("Enter the contact\'s name: ");
-        input.nextLine();
+        System.out.print("Enter the contact name: ");
         c.name = input.nextLine();
        
-        if (contacts.empty())
-            System.out.println("Contact not founded!");
+        if(contacts.empty())
+            System.out.println("Contact not founded");
         else
         {
             
@@ -162,7 +158,9 @@ public class Phonebook {
             else
             {
                 c = contacts.retrieve();
-                contacts.removeKey(c.name);
+                contacts.remove_key(c.name);
+                //Contact has been removed successfully!
+                //now we delete the events
                 if (! c.events.empty())
                 {
                     c.events.findFirst();
@@ -171,15 +169,15 @@ public class Phonebook {
                         Event e = c.events.retrieve();
                         if (events.findkey(e.title))
                         {
-                            Event Update_Event = events.retrieve();
-                            Update_Event.removeContact(c.name);
-                            if (Update_Event.contactsnames.empty())
+                            Event temp_Event = events.retrieve();
+                            temp_Event.removeContact(c.name);
+                            if (temp_Event.contactsnames.empty())
                             {
-                                events.removeKey(e.title);
-                                System.out.println("Delete event, No cantact particapate");
+                                events.remove_key(e.title);
+                                System.out.println("No othen cantact so the event has been deleted");
                             }
                             else
-                                events.update(Update_Event.title,Update_Event);
+                                events.update(temp_Event.title,temp_Event);
                             
                         }
                         c.events.findNext();
@@ -211,9 +209,8 @@ public class Phonebook {
         {
             System.out.print("Enter event date and time (MM/DD/YYYY HH:MM): ");
             e.date = input.nextLine();
-            
+            e.time = input.nextLine();
             System.out.print("Enter event location: ");
-            input.nextLine();
             e.location = input.nextLine();
             
             System.out.print("Enter the type of event you want to schedule: (E = Event, A = Appoinment) ");
@@ -350,7 +347,7 @@ public class Phonebook {
         System.out.println("1. Add a contact");
         System.out.println("2. Search for a contact");
         System.out.println("3. Delete a contact");
-        System.out.println("4. Schedule an event");
+        System.out.println("4. Schedule an event/appointment");
         System.out.println("5. Print event details");
         System.out.println("6. Print contacts by first name");
         System.out.println("7. Print all events alphabetically");

@@ -1,4 +1,3 @@
-import java.util.LinkedList;
 
 public class Contact implements Comparable<Contact> {
     String name;
