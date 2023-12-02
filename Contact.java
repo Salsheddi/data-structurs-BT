@@ -2,8 +2,8 @@ import java.util.LinkedList;
 
 public class Contact implements Comparable<Contact> {
     String name;
-    String phonenumber;
-    String emailaddress;
+    String phoneNumber;
+    String emailAddress;
     String address;
     String birthday; 
     String notes;
@@ -11,18 +11,18 @@ public class Contact implements Comparable<Contact> {
    
     public Contact() {
         this.name = "";
-        this.phonenumber = "";
-        this.emailaddress = "";
+        this.phoneNumber = "";
+        this.emailAddress = "";
         this.address = "";
         this.birthday = null;
         this.notes = "";
         events = new LinkedListADT<Event>();
     }
 
-    public Contact(String name, String phonenumber, String emailaddress, String address, String birthday, String notes) {
+    public Contact(String name, String phoneNumber, String emailAddress, String address, String birthday, String notes) {
         this.name = name;
-        this.phonenumber = phonenumber;
-        this.emailaddress = emailaddress;
+        this.phoneNumber = phoneNumber;
+        this.emailAddress = emailAddress;
         this.address = address;
         this.birthday = birthday;
         this.notes = notes;
