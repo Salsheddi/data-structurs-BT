@@ -1,13 +1,10 @@
 
 
 public class BST<K extends Comparable<K>,T> {
-    //================================================================================
     class BSTNode <K extends Comparable<K>,T> {
             public K key;  
             public T data;
             public BSTNode<K,T> left, right;
-
-            /** Creates a new instance of BTNode */
             public BSTNode() {
                     left = right = null;
             }
@@ -31,10 +28,19 @@ public class BST<K extends Comparable<K>,T> {
         }
 
     }
-    //================================================================================
+    
+
+
+
+
+
+
+
+
+    
     BSTNode<K,T> root, current;
 
-    /** Creates a new instance of BST */
+   //BSTADT class 
     public BST() {
             root = current = null;
     }
@@ -72,6 +78,9 @@ public class BST<K extends Comparable<K>,T> {
             current = q;
             return false;
     }
+
+
+
     public boolean insert(K k, T val) {
             BSTNode<K,T>  p;
             BSTNode<K,T>  q = current;
@@ -97,6 +106,9 @@ public class BST<K extends Comparable<K>,T> {
             }
     }
 
+
+
+    
     public boolean remove_key (K tkey){
             Boolean removed = new Boolean(false);
             BSTNode<K,T>  p;
@@ -223,10 +235,10 @@ public class BST<K extends Comparable<K>,T> {
     }
     return false; // Not found
     }
-    //======================================================================================
-    /* 
-    In order traversal
-    */
+    
+    
+    //In order traversal
+    
     @Override
     public String toString() 
     {
@@ -250,9 +262,8 @@ public class BST<K extends Comparable<K>,T> {
         return str;
     }
 
-    //==============================================
-    // Search contcat phone in the BST O(n)
-    //==============================================
+   // Search contcat phone in the BST O(n)
+   
     public boolean SearchPhone(String phone)
     {
         return SearchPhone_rec (root, phone);
@@ -270,10 +281,11 @@ public class BST<K extends Comparable<K>,T> {
         
         return (SearchPhone_rec(p.left , phone) || SearchPhone_rec(p.right, phone));
     }
+    
 
-    //==============================================
+    
     // Search contcat email in the BST O(n)
-    //==============================================
+   
     public void SearchEmail(String email)
     {
         SearchEmail_rec (root, email);
@@ -290,9 +302,25 @@ public class BST<K extends Comparable<K>,T> {
         SearchEmail_rec(p.right, email);
     }
     
-    //==============================================
+    // Search contcat birthday in the BST O(n)
+    
+    public void SearchBirthday(String birthday)
+    {
+        SearchBirthday_rec (root, birthday);
+    }
+    private void SearchBirthday_rec (BSTNode <K, T> p, String birthday)
+    {
+        if (p == null)
+            return ;
+        else    if (((Contact)p.data).compareToBirthday(birthday) == 0)
+            System.out.println(p.data);
+        
+        SearchBirthday_rec(p.left , birthday);
+        SearchBirthday_rec(p.right, birthday);
+    }
+  
     // Search contcat address in the BST O(n)
-    //==============================================
+   
     public void SearchAddress(String address)
     {
         SearchAddress_rec (root, address);
@@ -308,45 +336,10 @@ public class BST<K extends Comparable<K>,T> {
         SearchAddress_rec(p.right, address);
     }
     
-    //==============================================
-    // Search contcat birthday in the BST O(n)
-    //==============================================
-    public void SearchBirthday(String birthday)
-    {
-        SearchBirthday_rec (root, birthday);
-    }
-    private void SearchBirthday_rec (BSTNode <K, T> p, String birthday)
-    {
-        if (p == null)
-            return ;
-        else    if (((Contact)p.data).compareToBirthday(birthday) == 0)
-            System.out.println(p.data);
-        
-        SearchBirthday_rec(p.left , birthday);
-        SearchBirthday_rec(p.right, birthday);
-    }
+    
 
-    //==============================================
-    // Search contcat birthday in the BST O(n)
-    //==============================================
-    public void SearchSameFirstName(String name)
-    {
-        SearchSameFirstName_rec (root, name);
-    }
-    private void SearchSameFirstName_rec (BSTNode <K, T> p, String name)
-    {
-        if (p == null)
-            return ;
-        else    if (((Contact)p.data).compareFirstName(name) == 0)
-            System.out.println(p.data);
-       
-        SearchSameFirstName_rec(p.left , name);
-        SearchSameFirstName_rec(p.right, name);
-    }
-
-    //==============================================
+   
     // Search same Event data in the BST O(n)
-    //==============================================
     public boolean SearchSameEvent(Event event)
     {
         return SearchSameEvent_rec (root, event);
@@ -362,4 +355,22 @@ public class BST<K extends Comparable<K>,T> {
         }
         return (SearchSameEvent_rec(p.left , event) || SearchSameEvent_rec(p.right, event));
     }
+    // Search contcat birthday in the BST O(n)
+    
+    public void SearchSameFirstName(String name)
+    {
+        SearchSameFirstName_rec (root, name);
+    }
+    private void SearchSameFirstName_rec (BSTNode <K, T> p, String name)
+    {
+        if (p == null)
+            return ;
+        else    if (((Contact)p.data).compareFirstName(name) == 0)
+            System.out.println(p.data);
+       
+        SearchSameFirstName_rec(p.left , name);
+        SearchSameFirstName_rec(p.right, name);
+    }
+
+    
 }

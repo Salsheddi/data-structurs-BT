@@ -3,7 +3,11 @@ import java.util.LinkedList;
 public class Contact implements Comparable<Contact> {
     String name;
     String phoneNumber;
+<<<<<<< HEAD
     String emailAddress;
+=======
+    String emailaddress;
+>>>>>>> 94e10c73a3269cf6bac205efe3396cb3ce0b0cfb
     String address;
     String birthday; 
     String notes;
@@ -12,7 +16,11 @@ public class Contact implements Comparable<Contact> {
     public Contact() {
         this.name = "";
         this.phoneNumber = "";
+<<<<<<< HEAD
         this.emailAddress = "";
+=======
+        this.emailaddress = "";
+>>>>>>> 94e10c73a3269cf6bac205efe3396cb3ce0b0cfb
         this.address = "";
         this.birthday = null;
         this.notes = "";
@@ -21,8 +29,13 @@ public class Contact implements Comparable<Contact> {
 
     public Contact(String name, String phoneNumber, String emailAddress, String address, String birthday, String notes) {
         this.name = name;
+<<<<<<< HEAD
         this.phoneNumber = phoneNumber;
         this.emailAddress = emailAddress;
+=======
+        this.phoneNumber = phonenumber;
+        this.emailaddress = emailaddress;
+>>>>>>> 94e10c73a3269cf6bac205efe3396cb3ce0b0cfb
         this.address = address;
         this.birthday = birthday;
         this.notes = notes;
@@ -84,7 +97,7 @@ public class Contact implements Comparable<Contact> {
         }
     
         public String getEmailAddress() {
-        return emailAddress;
+        return emailaddress;
         }
     
         public String getAddress() {
@@ -113,7 +126,7 @@ public class Contact implements Comparable<Contact> {
         }
     
         public void setEmailAddress(String emailAddress) {
-        this.emailAddress = emailAddress;
+        this.emailaddress = emailAddress;
         }
     
         public void setAddress(String address) {
@@ -157,7 +170,7 @@ public int compareToBirthday(String birthday) {
     
     public int compareToPhone(String Phone) {
         try {
-            return (this.phonenumber.compareToIgnoreCase(Phone));
+            return (this.phoneNumber.compareToIgnoreCase(Phone));
         }
         catch (Exception e)
         {
@@ -193,7 +206,7 @@ public int compareToBirthday(String birthday) {
     @Override
     public String toString() {
         return "\nName: " + name +
-                    "\nPhone Number: " + phonenumber +
+                    "\nPhone Number: " + phoneNumber +
                     "\nEmail Address: " + emailaddress +
                     "\nAddress: " +  address +
                     "\nBirthday: " + birthday +
