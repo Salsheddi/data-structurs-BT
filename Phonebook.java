@@ -321,7 +321,7 @@ public class Phonebook {
     }
     
     //6. Print contacts by first name
-    public static void PrintContactsbyFirstName(){
+    public static void printByFirstName(){
        
         System.out.print("Enter the first name:");
         input.nextLine();
