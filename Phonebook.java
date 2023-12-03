@@ -340,6 +340,27 @@ public class Phonebook {
         else
             System.out.println("No events founded !");
     }
+    //8. print all contacts that share an event 
+    public static void printAllContactsForEvent(String title) {
+         if(events.empty()){
+             System.out.println("no events");
+              return; } 
+         Event a =null; 
+          if(events.findkey(title)) { 
+            a = events.retrieve();
+            a.contactsnames.findFirst();
+            if (a.contactsnames.empty()) {
+                          System.out.println("theres no contacts in that event");
+            }
+
+                System.err.println(a.contactsnames.toString());
+        }
+        else
+        {
+                 System.out.println("theres no event");
+
+        }
+         }
         
     public static int mainmenu ()
     {
