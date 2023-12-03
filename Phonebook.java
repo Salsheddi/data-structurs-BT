@@ -410,7 +410,7 @@ public class Phonebook {
                     break;
                     
                 case 6:
-                    PrintContactsbyFirstName();
+                    printByFirstName();
                     break;
                     
                 case 7:
